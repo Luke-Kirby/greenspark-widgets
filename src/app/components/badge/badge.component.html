@@ -1,0 +1,93 @@
+<div class="badge-content">
+
+  <!-- The Badge -->
+  <div [ngStyle]="{'background-color': selectedColor}" class="badge">
+
+    <div>
+
+      <!-- app-logo is a re-usable component -->
+      <app-logo [logoColor]="badgeContentColor"></app-logo>
+
+    </div>
+
+    <div [ngStyle]="{'color': badgeContentColor}"  class="badge-text">
+      <span class="sub-text">{{badgeText.subTitle}}</span>
+      <span class="main-text"><strong>{{badgeText.title}}</strong></span>
+    </div>
+
+  </div>
+
+  <!-- The Options -->
+  <div class="badge-option-container">
+
+    <div>
+
+      <span>Link to Public Profile</span>
+
+      <!-- The Tooltip - can be made as a re-usable component if required -->
+      <div class="tooltip-activator"
+           (mouseenter)="handleTooltip(true)"
+           (mouseleave)="handleTooltip(false)"
+           (click)="handleTooltipMobile(true)">
+
+           i
+
+           <div [hidden]="!tooltip.isVisible"
+                class="tooltip-container"
+                [class.visible]="tooltip.isVisible"
+                (mouseenter)="handleTooltip(true)"
+                (mouseleave)="handleTooltip(false)">
+
+                <!-- Can provide this text from the BE if required -->
+              <p>This widget links directly to your public profile
+                so that you can easily share your impact with your
+                customers. Turn it off here if you do not want the
+                badge to link to it.
+              </p>
+
+              <!-- Would add a href if active -->
+              <a matTooltip="This link would take the user to their public profile">
+                View Public Profile
+              </a>
+
+        </div>
+      </div>
+
+      <!-- This applys a backgound modal so that the user can click out of the tooltip -->
+      <div *ngIf="tooltip.isMobileVersion" class="tooltip-modal-bck"
+        (click)="handleTooltipMobile(false)">
+      </div>
+
+    </div>
+
+    <mat-checkbox [(ngModel)]="badgeData.linked" (ngModelChange)="emitData()" [color]="'primary'">
+    </mat-checkbox>
+
+  </div>
+
+  <div class="badge-option-container">
+
+    <span>Badge colour</span>
+
+    <!-- The colour select can be made as a re-usable component if required -->
+    <div class="color-container">
+
+      <div *ngFor="let color of selectableColors"
+        [ngStyle]="{'background-color': color, 'border-width': selectedColor === color? '2px': '0px' }"
+        class="color-select"
+        (click)="selectColor(color)">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="badge-option-container">
+
+    <span>Activate badge</span>
+
+    <mat-slide-toggle [(ngModel)]="badgeData.active" (ngModelChange)="emitData()" [color]="'primary'">
+    </mat-slide-toggle>
+
+  </div>
+
+</div>
