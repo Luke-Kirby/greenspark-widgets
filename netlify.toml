@@ -1,5 +1,5 @@
 [build]
   command = "npm run build"
-  publish = "/opt/build/repo/dist"
+  publish = "dist"
 [engines]
   node = "16.13.0"
