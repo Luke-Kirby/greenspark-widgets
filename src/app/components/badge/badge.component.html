@@ -5,7 +5,7 @@
 
     <div>
       <!-- app-logo is a re-usable component -->
-      <app-logo [logoColor]="badgeContentColor" />
+      <app-logo [logoColor]="badgeContentColor"></app-logo>
 
     </div>
 
@@ -61,7 +61,7 @@
     <mat-checkbox
       [(ngModel)]="badgeData.linked"
       (ngModelChange)="emitData()"
-      [color]="'primary'" />
+      [color]="'primary'"></mat-checkbox>
 
   </div>
 
@@ -86,7 +86,7 @@
     <mat-slide-toggle
       [(ngModel)]="badgeData.active"
       (ngModelChange)="emitData()"
-      [color]="'primary'" />
+      [color]="'primary'" ></mat-slide-toggle>
 
   </div>
 </div>
