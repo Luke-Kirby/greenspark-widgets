@@ -40,4 +40,31 @@ describe('BadgeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+it('should render link content', () => {
+    const compiled = fixture.nativeElement;
+    const link = compiled.querySelector('#public-profile-link');
+
+    expect(link.textContent).toContain('View Public Profile');
+  });
+
+  it('should render content', () => {
+    const compiled = fixture.nativeElement;
+    const element = compiled.querySelector('#link-title');
+
+    expect(element.textContent).toContain('Link to Public Profile');
+  });
+
+  it('should render badge title content', () => {
+    const compiled = fixture.nativeElement;
+    const badgeTitle = compiled.querySelector('#badge-color-title');
+
+    expect(badgeTitle.textContent).toContain('Badge colour');
+  });
+
+  it('should render all colours', () => {
+    const compiled = fixture.nativeElement;
+    const elements = compiled.querySelectorAll('.color-select');
+    expect(elements.length).toEqual(5);
+  });
 });

@@ -20,62 +20,51 @@
   <div class="badge-option-container">
 
     <div>
-      <span>Link to Public Profile</span>
+      <span id="link-title">Link to Public Profile</span>
 
       <!-- The Tooltip - can be made as a re-usable component if required -->
-      <div class="tooltip-activator"
-           (mouseenter)="handleTooltip(true)"
-           (mouseleave)="handleTooltip(false)"
-           (click)="handleTooltipMobile(true)">
+      <div class="tooltip-activator" (mouseenter)="handleTooltip(true)" (mouseleave)="handleTooltip(false)"
+        (click)="handleTooltipMobile(true)">
 
-           i
+        i
 
-           <div [hidden]="!tooltip.isVisible"
-                class="tooltip-container"
-                [class.visible]="tooltip.isVisible"
-                (mouseenter)="handleTooltip(true)"
-                (mouseleave)="handleTooltip(false)">
+        <div [hidden]="!tooltip.isVisible" class="tooltip-container" [class.visible]="tooltip.isVisible"
+          (mouseenter)="handleTooltip(true)" (mouseleave)="handleTooltip(false)">
 
-                <!-- Can provide this text from the BE if required -->
-              <p>This widget links directly to your public profile
-                so that you can easily share your impact with your
-                customers. Turn it off here if you do not want the
-                badge to link to it.
-              </p>
+          <!-- Can provide this text from the BE if required -->
+          <p>This widget links directly to your public profile
+            so that you can easily share your impact with your
+            customers. Turn it off here if you do not want the
+            badge to link to it.
+          </p>
 
-              <!-- Would add a href if active -->
-              <a matTooltip="This link would take the user to their public profile">
-                View Public Profile
-              </a>
+          <!-- Would add a href if active -->
+          <a id="public-profile-link" matTooltip="This link would take the user to their public profile">
+            View Public Profile
+          </a>
 
         </div>
       </div>
 
       <!-- This applys a backgound modal so that the user can click out of the tooltip -->
-      <div *ngIf="tooltip.isMobileVersion" class="tooltip-modal-bck"
-        (click)="handleTooltipMobile(false)">
+      <div *ngIf="tooltip.isMobileVersion" class="tooltip-modal-bck" (click)="handleTooltipMobile(false)">
       </div>
 
     </div>
 
-    <mat-checkbox
-      [(ngModel)]="badgeData.linked"
-      (ngModelChange)="emitData()"
-      [color]="'primary'"></mat-checkbox>
+    <mat-checkbox [(ngModel)]="badgeData.linked" (ngModelChange)="emitData()" [color]="'primary'"></mat-checkbox>
 
   </div>
 
   <div class="badge-option-container">
 
-    <span>Badge colour</span>
+    <span id="badge-color-title">Badge colour</span>
 
     <!-- The colour select can be made as a re-usable component if required -->
     <div class="color-container">
-
       <div *ngFor="let color of selectableColors"
         [ngStyle]="{'background-color': color, 'border-width': selectedColor === color? '2px': '0px' }"
-        class="color-select"
-        (click)="selectColor(color)">
+        class="color-select" (click)="selectColor(color)">
       </div>
     </div>
   </div>
@@ -83,10 +72,8 @@
   <div class="badge-option-container">
 
     <span>Activate badge</span>
-    <mat-slide-toggle
-      [(ngModel)]="badgeData.active"
-      (ngModelChange)="emitData()"
-      [color]="'primary'" ></mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="badgeData.active" (ngModelChange)="emitData()"
+      [color]="'primary'"></mat-slide-toggle>
 
   </div>
 </div>

@@ -22,4 +22,18 @@ describe('CardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render card title', () => {
+    const compiled = fixture.nativeElement;
+    const title = compiled.querySelector('#card-title');
+
+    expect(title.textContent).toContain('Per product widgets');
+  });
+
+  it('should be loading', () => {
+    const compiled = fixture.nativeElement;
+    const link = compiled.querySelector('.load-container');
+
+    expect(link.textContent).toContain('Loading');
+  });
 });
