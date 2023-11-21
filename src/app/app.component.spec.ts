@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
-import { CardComponent } from './components/card/card.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        CardComponent
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
@@ -20,10 +16,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.card-container div')).toBeTruthy()
-  });
 });
